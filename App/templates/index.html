@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Price Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Indian Flight Price Prediction ✈️</h2>
+
+        <form action="/predict" method="POST" class="card p-4 shadow">
+            <!-- Numeric Inputs -->
+            <div class="row mb-3">
+                <div class="col">
+                    <label>Total Stops</label>
+                    <input type="number" class="form-control" name="Total_Stops" required>
+                </div>
+                <div class="col">
+                    <label>Duration (in minutes)</label>
+                    <input type="number" class="form-control" name="Duration" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label>Journey Day</label>
+                    <input type="number" class="form-control" name="Journey_day" required>
+                </div>
+                <div class="col">
+                    <label>Journey Month</label>
+                    <input type="number" class="form-control" name="Journey_month" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label>Departure Hour</label>
+                    <input type="number" class="form-control" name="Dep_hour" required>
+                </div>
+                <div class="col">
+                    <label>Departure Minute</label>
+                    <input type="number" class="form-control" name="Dep_min" required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label>Arrival Hour</label>
+                    <input type="number" class="form-control" name="Arrival_hour" required>
+                </div>
+                <div class="col">
+                    <label>Arrival Minute</label>
+                    <input type="number" class="form-control" name="Arrival_min" required>
+                </div>
+            </div>
+
+            <!-- Airline Checkboxes -->
+            <h5>Airline</h5>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Airline_IndiGo" value="1"> <label class="form-check-label">IndiGo</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Airline_SpiceJet" value="1"> <label class="form-check-label">SpiceJet</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Airline_Vistara" value="1"> <label class="form-check-label">Vistara</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Airline_Air India" value="1"> <label class="form-check-label">Air India</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Airline_Multiple carriers" value="1"> <label class="form-check-label">Multiple carriers</label></div>
+
+            <!-- Source City -->
+            <h5 class="mt-4">Source City</h5>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Source_Delhi" value="1"> <label class="form-check-label">Delhi</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Source_Kolkata" value="1"> <label class="form-check-label">Kolkata</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Source_Mumbai" value="1"> <label class="form-check-label">Mumbai</label></div>
+
+            <!-- Destination City -->
+            <h5 class="mt-4">Destination City</h5>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Destination_BLR" value="1"> <label class="form-check-label">Bangalore</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Destination_Cochin" value="1"> <label class="form-check-label">Cochin</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Destination_Delhi" value="1"> <label class="form-check-label">Delhi</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Destination_Hyderabad" value="1"> <label class="form-check-label">Hyderabad</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="Destination_Kolkata" value="1"> <label class="form-check-label">Kolkata</label></div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary mt-4">Predict Price</button>
+
+            <!-- Output -->
+            {% if prediction_text %}
+                <div class="alert alert-success mt-4">
+                    {{ prediction_text }}
+                </div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>
